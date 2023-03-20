@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_masterdata_product,access_masterdata_product,snk_master.model_masterdata_product,base.group_user,1,1,1,1
+access_masterdata_suplier,access_masterdata_suplier,snk_master.model_masterdata_suplier,base.group_user,1,1,1,1
+access_masterdata_category,access_masterdata_category,snk_master.model_masterdata_category,base.group_user,1,1,1,1

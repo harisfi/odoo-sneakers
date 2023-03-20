@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_master_data_product_tree" model="ir.ui.view">
+        <field name="name">masterdata.product.tree</field>
+        <field name="model">masterdata.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="idcode"/>
+                <field name="name" string="Product Name"/> 
+                <field name="price"/>
+                <field name="category_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_master_data_product_form" model="ir.ui.view">
+        <field name="name">masterdata.product.form</field>
+        <field name="model">masterdata.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="idcode"/>
+                            <field name="name"/> 
+                        </group>
+                        <group>
+                            <field name="price"/>
+                            <field name="category_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_master_data_product_search" model="ir.ui.view">
+        <field name="name">masterdata.product.search</field>
+        <field name="model">masterdata.product</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Product Name" filter_domain="['|', ('name', 'ilike', self), ('idcode', 'ilike', self)]"/> 
+                <field name="idcode"/>
+                <field name="price"/>
+                <field name="category_id"/>
+                <filter name="filter_import" string="Import" domain="[('category_id','=','Import')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_master_data_product" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">masterdata.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product
+            </p>
+        </field>
+    </record>
+
+    <!-- Category -->
+    <record id="view_master_data_category_tree" model="ir.ui.view">
+        <field name="name">masterdata.category.tree</field>
+        <field name="model">masterdata.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="idcode"/>
+                <field name="name" string="Category Name"/> 
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_master_data_category_form" model="ir.ui.view">
+        <field name="name">masterdata.category.form</field>
+        <field name="model">masterdata.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="idcode"/>
+                        <field name="name"/>   
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_master_data_category_search" model="ir.ui.view">
+        <field name="name">masterdata.category.search</field>
+        <field name="model">masterdata.category</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Category Name" filter_domain="['|', ('name', 'ilike', self), ('idcode', 'ilike', self)]"/> 
+                <field name="idcode"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_master_data_category" model="ir.actions.act_window">
+        <field name="name">Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">masterdata.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new category
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_product"
+        name="Products"
+        action="action_master_data_product"
+        parent="menu_master_data_product"
+        sequence="0"/>
+
+    <menuitem id="menu_category"
+        name="Category List"
+        action="action_master_data_category"
+        parent="menu_master_data_product"
+        sequence="0"/>
+
+</odoo>

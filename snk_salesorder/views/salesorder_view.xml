@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sales_order_tree" model="ir.ui.view">
+        <field name="name">simple_sales.orders.tree</field>
+        <field name="model">simple_sales.orders</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="idcode"/>
+                <field name="product_id"/>
+                <field name="qty_order"/>
+                <field name="amount"/>
+                <field name="remark"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sales_order_form" model="ir.ui.view">
+        <field name="name">simple_sales.orders.form</field>
+        <field name="model">simple_sales.orders</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="idcode"/>
+                            <field name="product_id"/>
+                            <field name="price"/>
+                        </group>
+                        <group>
+                            <field name="qty_order" on_change="onchange_qty_order"/>
+                            <field name="amount"/>
+                            <field name="remark"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sales_order_search" model="ir.ui.view">
+        <field name="name">simple_sales.orders.search</field>
+        <field name="model">simple_sales.orders</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="idcode"/>
+                <field name="product_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sales_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">simple_sales.orders</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Sales Ordes
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_orders"
+        name="Orders"
+        action="action_sales_order"
+        parent="menu_sales_order_master"
+        sequence="0"/>
+
+</odoo>
