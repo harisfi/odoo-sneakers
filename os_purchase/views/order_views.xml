@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <odoo>
+<odoo>
+    <record id="view_os_purchase_order_tree" model="ir.ui.view">
+        <field name="name">os_purchase.order.tree</field>
+        <field name="model">os_purchase.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="ref" />
+                <field name="name" string="Order Name" />
+                <field name="product_id" />
+                <field name="price" />
+                <field name="qty" />
+                <field name="notes" />
+            </tree>
+        </field>
+    </record>
 
-        <record id="view_form_order" model="ir.ui.view">
-            <field name="name">Order</field>
-                <field name="model">os_purchase.order</field>
-                <field name="type">form</field>
-                <field name="arch" type="xml">
-                <form>
-                    <sheet>
+    <record id="view_os_purchase_order_form" model="ir.ui.view">
+        <field name="name">os_purchase.order.form</field>
+        <field name="model">os_purchase.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
                         <group>
-                            <group>
-                                <field name="name"/>
-                            </group>    
-                            <group>
-                            </group>    
+                            <field name="product_id" />
+                            <field name="price" />
+                            <field name="name" />
                         </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+                        <group>
+                            <field name="qty" />
+                            <field name="ref" />
+                            <field name="notes" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-        <record id="tree_view_order" model="ir.ui.view">
-            <field name="name">Order</field>
-            <field name="model">os_purchase.order</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                </tree>
-            </field>
-        </record>
+    <record id="action_os_purchase_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">os_purchase.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first order!
+            </p>
+        </field>
+    </record>
 
-        <record id="order_action" model="ir.actions.act_window">
-            <field name="name">Order</field>
-            <field name="res_model">os_purchase.order</field>
-            <field name="view_mode">tree,form</field>
-            <field name="search_view_id" ref="view_form_order"/>
-        </record>
-
-        <menuitem name="Order"
-            id="order_menu_root"/>
-
-        <menuitem name="Order"
-            id="order_menu_action"
-            action="order_action"
-            parent="order_menu_root"/>
-    </odoo>
+    <menuitem id="menu_os_purchase_order_detail"
+        name="Order Details"
+        parent="menu_os_purchase_order_master"
+        sequence="0" />
+</odoo>

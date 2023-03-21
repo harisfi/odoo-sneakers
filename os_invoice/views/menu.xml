@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_os_invoice_root"
+        name="Sneakers Invoice"
+        web_icon="os_invoice,static/description/icon.png"
+        sequence="0" />
+</odoo>
