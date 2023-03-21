@@ -4,7 +4,7 @@
     'summary': """OS Invoice Module""",
     'author': 'haris',
     'version': '15',
-    'depends': [''],
+    'depends': [],
     'data': ['views/invoice_views.xml'],
     'application': True,
 }

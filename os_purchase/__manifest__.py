@@ -4,7 +4,7 @@
     'summary': """OS Purchase Module""",
     'author': 'haris',
     'version': '15',
-    'depends': [''],
+    'depends': [],
     'data': ['views/order_views.xml'],
     'application': True,
 }
